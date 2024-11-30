@@ -1,1 +1,1 @@
-# mangnify
+# Mangnify
