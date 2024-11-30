@@ -29,32 +29,54 @@ def on_change_select_options_dropdown(widget, app):
     Handle the select event on the select options dropdown.
     """
 
+    while len(app.dynamic_container.children):
+        app.dynamic_container.remove(app.dynamic_container.children[0])
+
     selected_option = widget.value
 
-    if selected_option == "1) Process Images":
+    if selected_option == OPTIONS[0]:
         app.is_processing_needed = True
         app.is_keep_images = True
 
-    if selected_option == "2) Package into CBZ":
+        app.dynamic_container.add(app.image_options_container)
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[1]:
         app.is_processing_needed = False
         app.is_keep_images = False
 
-    if selected_option == "3) Process & package into CBZ":
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[2]:
         app.is_processing_needed = True
         app.is_keep_images = False
 
-    if selected_option == "4) Process & package into CBZ (keep files)":
+        app.dynamic_container.add(app.image_options_container)
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[3]:
         app.is_processing_needed = True
         app.is_keep_images = True
 
-    if selected_option == "5) Package into AZW3":
+        app.dynamic_container.add(app.image_options_container)
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[4]:
         app.is_processing_needed = False
         app.is_keep_images = False
 
-    if selected_option == "6) Process & package into AZW3":
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[5]:
         app.is_processing_needed = True
         app.is_keep_images = False
 
-    if selected_option == "7) Process & package into AZW3 (keep files)":
+        app.dynamic_container.add(app.image_options_container)
+        app.dynamic_container.add(app.comic_info_options_container)
+
+    if selected_option == OPTIONS[6]:
         app.is_processing_needed = True
         app.is_keep_images = True
+
+        app.dynamic_container.add(app.image_options_container)
+        app.dynamic_container.add(app.comic_info_options_container)
