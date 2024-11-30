@@ -13,7 +13,7 @@ class Mangnify(toga.App):
         self.output_directory = None
         self.working_directory = None
         self.is_processing_needed = None
-        self.is_keep_files = None
+        self.is_keep_images = None
 
         self.main_window = toga.MainWindow(
             title=f"{self.formal_name} v{self.version}",
