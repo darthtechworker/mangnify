@@ -10,10 +10,12 @@ class Mangnify(toga.App):
         """
 
         self.input_directory = None
+        self.is_processing_needed = None
+        self.is_keep_files = None
 
         self.main_window = toga.MainWindow(
             title=f"{self.formal_name} v{self.version}",
-            size=(400, 400),
+            size=(380, 400),
             resizable=False,
         )
 
