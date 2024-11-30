@@ -10,6 +10,8 @@ class Mangnify(toga.App):
         """
 
         self.input_directory = None
+        self.output_directory = None
+        self.working_directory = None
         self.is_processing_needed = None
         self.is_keep_files = None
 
