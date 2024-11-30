@@ -1,0 +1,16 @@
+{
+    // Enable format on save
+    "editor.formatOnSave": true,
+  
+    // Use Black as the default formatter
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+
+    // ruff
+    "ruff.enable": true,
+
+    // Lint but don't fix
+    "ruff.lint.args": ["--no-fix"],
+    
+}
