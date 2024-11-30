@@ -1,0 +1,37 @@
+[tool.briefcase]
+project_name = "Mangnify"
+bundle = "com.darthtechworker"
+version = "0.0.1"
+url = ""
+license.file = "LICENSE"
+author = "darthtechworker"
+author_email = ""
+
+[tool.briefcase.app.mangnify]
+formal_name = "Mangnify"
+description = "An AI image upscaler for Manga and Comics"
+long_description = """"""
+sources = [
+    "src/mangnify",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+]
+test_requires = [
+    "pytest",
+]
+
+[tool.briefcase.app.mangnify.macOS]
+universal_build = false
+requires = [
+    "toga-cocoa~=0.4.7",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.mangnify.windows]
+requires = [
+    "toga-winforms~=0.4.7",
+]
