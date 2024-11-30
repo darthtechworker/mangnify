@@ -1,6 +1,7 @@
 # Virtual Environment
-/.venv
+.venv
 
 # Generated Files
-/src/mangnify/__pycache__/
-/src/mangnify.dist-info/
+logs/
+**/__pycache__/
+src/mangnify.dist-info/
