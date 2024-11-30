@@ -3,5 +3,10 @@
 
 # Generated Files
 logs/
+build/
+dist/
 **/__pycache__/
 src/mangnify.dist-info/
+
+# Other
+.DS_Store
