@@ -68,6 +68,7 @@ def on_change_select_options_dropdown(widget, app):
         app.is_keep_images = False
 
         app.dynamic_container.add(app.comic_info_options_container)
+        app.dynamic_container.add(app.azw3_options_container)
 
     if selected_option == OPTIONS[5]:
         app.is_processing_needed = True
@@ -75,6 +76,7 @@ def on_change_select_options_dropdown(widget, app):
 
         app.dynamic_container.add(app.image_options_container)
         app.dynamic_container.add(app.comic_info_options_container)
+        app.dynamic_container.add(app.azw3_options_container)
 
     if selected_option == OPTIONS[6]:
         app.is_processing_needed = True
@@ -82,6 +84,7 @@ def on_change_select_options_dropdown(widget, app):
 
         app.dynamic_container.add(app.image_options_container)
         app.dynamic_container.add(app.comic_info_options_container)
+        app.dynamic_container.add(app.azw3_options_container)
 
 
 def update_comic_info_options_container(widget, app):
