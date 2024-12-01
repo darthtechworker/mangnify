@@ -43,20 +43,20 @@ def build_compression_level_container(app):
         text=COMPRESSION_LEVEL_LABEL,
         style=Pack(font_weight=BOLD, padding=(0, 36, 0, 0)),
     )
-    app.compression_level_slider = toga.Selection(
+    app.compression_level_dropdown = toga.Selection(
         items=[f"{i}%" for i in range(0, 26)],
         style=Pack(width=65),
-        on_change=lambda widget: on_change_compression_level_slider(widget, app),
+        on_change=lambda widget: on_change_compression_level_dropdown(widget, app),
     )
 
     app.compression_level_container = toga.Box(
         style=Pack(direction=ROW, padding=(0, 82, 10, 82))
     )
     app.compression_level_container.add(app.compression_level_label)
-    app.compression_level_container.add(app.compression_level_slider)
+    app.compression_level_container.add(app.compression_level_dropdown)
 
 
-def on_change_compression_level_slider(widget, app):
+def on_change_compression_level_dropdown(widget, app):
     """
     Handle the change event on the compression level slider.
     """
