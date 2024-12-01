@@ -49,6 +49,13 @@ class Mangnify(toga.App):
 
         self.main_window.show()
 
+    def resize_window(self):
+        """
+        Resize the main window.
+        """
+
+        self.main_window.size = (WIDTH, HEIGHT)
+
 
 def main():
     return Mangnify()
