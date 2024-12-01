@@ -1,4 +1,7 @@
-from mangnify.ui.components.azw3_options_container import build_azw3_options_container
+from mangnify.ui.components.azw3_options_container import (
+    build_azw3_options_container,
+    on_change_grayscale_checkbox,
+)
 from mangnify.ui.components.comic_info_options_container import (
     build_comic_info_options_container,
 )
@@ -6,7 +9,11 @@ from mangnify.ui.components.dynamic_container import build_dynamic_container
 from mangnify.ui.components.execution_buttons_container import (
     build_execution_buttons_container,
 )
-from mangnify.ui.components.image_options_container import build_image_options_container
+from mangnify.ui.components.image_options_container import (
+    build_image_options_container,
+    on_change_rotate_spread_checkbox,
+    on_change_trim_margins_checkbox,
+)
 from mangnify.ui.components.log_area import build_log_area
 from mangnify.ui.components.progress_bar import build_progress_bar
 from mangnify.ui.components.select_input_directory import (
@@ -16,6 +23,9 @@ from mangnify.ui.components.select_options_dropdown import (
     OPTIONS,
     build_select_options_dropdown,
 )
+from mangnify.utils import logging
+
+logger = logging.getLogger(__name__)
 
 
 def build_ui(app):
@@ -52,14 +62,18 @@ def init_ui(app):
 
     app.jpg_quality_dropdown.value = "90%"
     app.trim_margins_checkbox.value = False
+    on_change_trim_margins_checkbox(app.trim_margins_checkbox, app)
     app.trim_limit_dropdown.value = "10%"
     app.add_margins_dropdown.value = "0%"
     app.rotate_spread_checkbox.value = False
+    on_change_rotate_spread_checkbox(app.rotate_spread_checkbox, app)
 
     # TODO: read and update comic info options from comic info file here
+
+    app.grayscale_checkbox.value = True
+    on_change_grayscale_checkbox(app.grayscale_checkbox, app)
+    app.compression_level_dropdown.value = "10%"
 
     app.abort_button.enabled = False
 
     app.progress_bar.value = 0
-
-    app.log_area.value = "Welcome to Mangnify!\n"
