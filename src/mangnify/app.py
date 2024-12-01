@@ -1,3 +1,5 @@
+import threading
+
 import toga
 from toga.style.pack import COLUMN, Pack
 
@@ -45,6 +47,9 @@ class Mangnify(toga.App):
         self.compression_level = None
         self.device_height = None
         self.device_width = None
+
+        # Threading
+        self.abort_event = threading.Event()
 
         self.main_window = toga.MainWindow(
             title=f"{self.formal_name} v{self.version}",
