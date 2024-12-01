@@ -86,7 +86,7 @@ def build_writer_container(app):
         placeholder=WRITER_PLACEHOLDER,
     )
 
-    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 40, 8, 40)))
+    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 40, 10, 40)))
     app.writer_container.add(app.writer_label)
     app.writer_container.add(app.writer_input)
 

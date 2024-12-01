@@ -15,7 +15,7 @@ def build_jpg_quality_container(app):
 
     app.jpg_quality_label = toga.Label(
         text=JPG_QUALITY_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 50, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 46, 0, 0)),
     )
     app.jpg_quality_dropdown = toga.Selection(
         items=[f"{i}%" for i in range(80, 101)],
@@ -45,7 +45,7 @@ def build_trim_margins_container(app):
 
     app.trim_margins_label = toga.Label(
         text=TRIM_MARGINS_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 65, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 61, 0, 0)),
     )
     app.trim_margins_checkbox = toga.Switch(
         text="",
@@ -66,7 +66,7 @@ def build_trim_limit_container(app):
 
     app.trim_limit_label = toga.Label(
         text=TRIM_LIMIT_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 61, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 57, 0, 0)),
     )
     app.trim_limit_dropdown = toga.Selection(
         items=[f"{i}%" for i in range(10, 21)],
@@ -121,7 +121,7 @@ def build_add_margins_container(app):
 
     app.add_margins_label = toga.Label(
         text=ADD_MARGINS_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 44, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 40, 0, 0)),
     )
     app.add_margins_dropdown = toga.Selection(
         items=[f"{i}%" for i in range(0, 11)],
@@ -151,7 +151,7 @@ def build_rotate_spread_container(app):
 
     app.rotate_spread_label = toga.Label(
         text=ROTATE_SPREAD_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 58, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 54, 0, 0)),
     )
     app.rotate_spread_checkbox = toga.Switch(
         text="",
