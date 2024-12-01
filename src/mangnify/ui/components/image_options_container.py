@@ -24,7 +24,7 @@ def build_jpg_quality_container(app):
     )
 
     app.jpg_quality_container = toga.Box(
-        style=Pack(direction=ROW, padding=(6, 102, 0, 102), height=31)
+        style=Pack(direction=ROW, padding=(6, 82, 0, 82), height=30)
     )
     app.jpg_quality_container.add(app.jpg_quality_label)
     app.jpg_quality_container.add(app.jpg_quality_dropdown)
@@ -53,7 +53,7 @@ def build_trim_margins_container(app):
     )
 
     app.trim_margins_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 0, 102), height=29)
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=29)
     )
     app.trim_margins_container.add(app.trim_margins_label)
     app.trim_margins_container.add(app.trim_margins_checkbox)
@@ -75,7 +75,7 @@ def build_trim_limit_container(app):
     )
 
     app.trim_limit_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 0, 102), height=30)
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=30)
     )
     app.trim_limit_container.add(app.trim_limit_label)
     app.trim_limit_container.add(app.trim_limit_dropdown)
@@ -130,7 +130,7 @@ def build_add_margins_container(app):
     )
 
     app.add_margins_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 0, 102), height=29)
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=30)
     )
     app.add_margins_container.add(app.add_margins_label)
     app.add_margins_container.add(app.add_margins_dropdown)
@@ -159,7 +159,7 @@ def build_rotate_spread_container(app):
     )
 
     app.rotate_spread_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 10, 102))
+        style=Pack(direction=ROW, padding=(0, 82, 10, 82))
     )
     app.rotate_spread_container.add(app.rotate_spread_label)
     app.rotate_spread_container.add(app.rotate_spread_checkbox)

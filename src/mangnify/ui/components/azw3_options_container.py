@@ -20,7 +20,7 @@ def build_grayscale_container(app):
     )
 
     app.grayscale_container = toga.Box(
-        style=Pack(direction=ROW, padding=(5, 102, 0, 102), height=30)
+        style=Pack(direction=ROW, padding=(5, 82, 0, 82), height=30)
     )
     app.grayscale_container.add(app.grayscale_label)
     app.grayscale_container.add(app.grayscale_checkbox)
@@ -50,7 +50,7 @@ def build_compression_level_container(app):
     )
 
     app.compression_level_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 10, 102))
+        style=Pack(direction=ROW, padding=(0, 82, 10, 82))
     )
     app.compression_level_container.add(app.compression_level_label)
     app.compression_level_container.add(app.compression_level_slider)

@@ -20,7 +20,7 @@ def build_select_options_dropdown(app):
     app.select_options_dropdown = toga.Selection(
         items=OPTIONS,
         on_change=lambda widget: on_change_select_options_dropdown(widget, app),
-        style=Pack(padding=(10, 40, 10, 40)),
+        style=Pack(padding=(10, 20, 10, 20)),
     )
 
 
@@ -85,6 +85,8 @@ def on_change_select_options_dropdown(widget, app):
         app.dynamic_container.add(app.image_options_container)
         app.dynamic_container.add(app.comic_info_options_container)
         app.dynamic_container.add(app.azw3_options_container)
+
+    app.resize_window()
 
 
 def update_comic_info_options_container(widget, app):

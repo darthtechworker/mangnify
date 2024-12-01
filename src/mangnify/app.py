@@ -2,7 +2,7 @@ import toga
 from toga.style.pack import Pack, COLUMN
 from .ui.main import build_ui
 
-WIDTH = 400
+WIDTH = 360
 HEIGHT = 400
 
 

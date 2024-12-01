@@ -26,7 +26,7 @@ def build_title_container(app):
         placeholder=TITLE_PLACEHOLDER,
     )
 
-    app.title_container = toga.Box(style=Pack(direction=ROW, padding=(16, 40, 8, 40)))
+    app.title_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.title_container.add(app.title_label)
     app.title_container.add(app.title_input)
 
@@ -46,7 +46,7 @@ def build_series_container(app):
         placeholder=SERIES_PLACEHOLDER,
     )
 
-    app.series_container = toga.Box(style=Pack(direction=ROW, padding=(10, 40, 8, 40)))
+    app.series_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.series_container.add(app.series_label)
     app.series_container.add(app.series_input)
 
@@ -66,7 +66,7 @@ def build_volume_container(app):
         placeholder=VOLUME_PLACEHOLDER,
     )
 
-    app.volume_container = toga.Box(style=Pack(direction=ROW, padding=(10, 40, 8, 40)))
+    app.volume_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.volume_container.add(app.volume_label)
     app.volume_container.add(app.volume_input)
 
@@ -86,7 +86,7 @@ def build_writer_container(app):
         placeholder=WRITER_PLACEHOLDER,
     )
 
-    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 40, 10, 40)))
+    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 10, 20)))
     app.writer_container.add(app.writer_label)
     app.writer_container.add(app.writer_input)
 
