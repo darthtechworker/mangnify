@@ -159,7 +159,7 @@ def build_rotate_spread_container(app):
     )
 
     app.rotate_spread_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 102, 0, 102))
+        style=Pack(direction=ROW, padding=(0, 102, 10, 102))
     )
     app.rotate_spread_container.add(app.rotate_spread_label)
     app.rotate_spread_container.add(app.rotate_spread_checkbox)
