@@ -6,6 +6,8 @@ TRIM_MARGINS_LABEL = "Trim Margins:"
 TRIM_LIMIT_LABEL = "Trim Limit:"
 ADD_MARGINS_LABEL = "Add Margins:"
 ROTATE_SPREAD_LABEL = "Rotate Spread:"
+SCALE_LABEL = "Scale:"
+SCALE_OPTIONS = ["None", "1x", "2x", "3x", "4x"]
 
 
 def build_jpg_quality_container(app):
@@ -159,7 +161,7 @@ def build_rotate_spread_container(app):
     )
 
     app.rotate_spread_container = toga.Box(
-        style=Pack(direction=ROW, padding=(0, 82, 10, 82))
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=29)
     )
     app.rotate_spread_container.add(app.rotate_spread_label)
     app.rotate_spread_container.add(app.rotate_spread_checkbox)
@@ -173,6 +175,34 @@ def on_change_rotate_spread_checkbox(widget, app):
     app.is_rotate_spread = widget.value
 
 
+def build_scale_container(app):
+    """
+    Build the scale container.
+    """
+
+    app.scale_label = toga.Label(
+        text=SCALE_LABEL,
+        style=Pack(font_weight=BOLD, padding=(0, 86, 0, 0)),
+    )
+    app.scale_dropdown = toga.Selection(
+        items=SCALE_OPTIONS,
+        style=Pack(width=65),
+        on_change=lambda widget: on_change_scale_dropdown(widget, app),
+    )
+
+    app.scale_container = toga.Box(style=Pack(direction=ROW, padding=(0, 82, 10, 82)))
+    app.scale_container.add(app.scale_label)
+    app.scale_container.add(app.scale_dropdown)
+
+
+def on_change_scale_dropdown(widget, app):
+    """
+    Handle the select event on the scale dropdown.
+    """
+
+    app.scale_factor = int(widget.value[0]) if widget.value != "None" else None
+
+
 def build_image_options_container(app):
     """
     Build the image options container.
@@ -183,6 +213,7 @@ def build_image_options_container(app):
     build_trim_margins_options_container(app)
     build_add_margins_container(app)
     build_rotate_spread_container(app)
+    build_scale_container(app)
 
     app.image_options_container = toga.Box(style=Pack(direction=COLUMN))
     app.image_options_container.add(app.jpg_quality_container)
@@ -190,3 +221,4 @@ def build_image_options_container(app):
     app.image_options_container.add(app.trim_margins_options_container)
     app.image_options_container.add(app.add_margins_container)
     app.image_options_container.add(app.rotate_spread_container)
+    app.image_options_container.add(app.scale_container)

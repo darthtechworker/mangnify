@@ -34,6 +34,7 @@ class Mangnify(toga.App):
         self.trim_limit = None
         self.add_margins = None
         self.is_rotate_spread = None
+        self.scale_factor = None
 
         # CBZ options
         self.is_cbz_needed = None

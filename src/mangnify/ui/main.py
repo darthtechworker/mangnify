@@ -67,6 +67,7 @@ def init_ui(app):
     app.add_margins_dropdown.value = "0%"
     app.rotate_spread_checkbox.value = False
     on_change_rotate_spread_checkbox(app.rotate_spread_checkbox, app)
+    app.scale_dropdown.value = "1x"
 
     # TODO: read and update comic info options from comic info file here
 
