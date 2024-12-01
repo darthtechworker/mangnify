@@ -42,6 +42,8 @@ class Mangnify(toga.App):
         self.is_azw3_needed = None
         self.is_grayscale = None
         self.compression_level = None
+        self.device_height = None
+        self.device_width = None
 
         self.main_window = toga.MainWindow(
             title=f"{self.formal_name} v{self.version}",
