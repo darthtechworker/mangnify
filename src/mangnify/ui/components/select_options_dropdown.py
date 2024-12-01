@@ -32,6 +32,8 @@ def on_change_select_options_dropdown(widget, app):
     while len(app.dynamic_container.children):
         app.dynamic_container.remove(app.dynamic_container.children[0])
 
+    update_comic_info_options_container(widget, app)
+
     selected_option = widget.value
 
     if selected_option == OPTIONS[0]:
@@ -39,13 +41,13 @@ def on_change_select_options_dropdown(widget, app):
         app.is_keep_images = True
 
         app.dynamic_container.add(app.image_options_container)
-        app.dynamic_container.add(app.comic_info_options_container)
 
     if selected_option == OPTIONS[1]:
         app.is_processing_needed = False
         app.is_keep_images = False
 
         app.dynamic_container.add(app.comic_info_options_container)
+        app.comic_info_options_container.add(app.title_container)
 
     if selected_option == OPTIONS[2]:
         app.is_processing_needed = True
@@ -80,3 +82,22 @@ def on_change_select_options_dropdown(widget, app):
 
         app.dynamic_container.add(app.image_options_container)
         app.dynamic_container.add(app.comic_info_options_container)
+
+
+def update_comic_info_options_container(widget, app):
+    """
+    Update the comic info options container.
+    """
+
+    while len(app.comic_info_options_container.children):
+        app.comic_info_options_container.remove(
+            app.comic_info_options_container.children[0]
+        )
+
+    app.comic_info_options_container.add(app.title_container)
+
+    if widget.value in [OPTIONS[1], OPTIONS[2], OPTIONS[3]]:
+        app.comic_info_options_container.add(app.series_container)
+        app.comic_info_options_container.add(app.volume_container)
+
+    app.comic_info_options_container.add(app.writer_container)

@@ -1,3 +1,6 @@
+from mangnify.ui.components.comic_info_options_container import (
+    build_comic_info_options_container,
+)
 from mangnify.ui.components.image_options_container import build_image_options_container
 from mangnify.ui.components.select_input_directory import (
     build_select_input_directory_button,
@@ -18,6 +21,7 @@ def build_ui(app):
     build_select_options_dropdown(app)
     build_dynamic_container(app)
     build_image_options_container(app)
+    build_comic_info_options_container(app)
 
     app.main_box.add(app.select_input_directory_button)
     app.main_box.add(app.select_options_dropdown)
@@ -30,3 +34,5 @@ def build_ui(app):
     app.trim_limit_dropdown.value = "10%"
     app.add_margins_dropdown.value = "0%"
     app.rotate_spread_checkbox.value = False
+
+    # TODO: read and update comic info options from comic info file here
