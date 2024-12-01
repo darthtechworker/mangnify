@@ -1,6 +1,8 @@
 import toga
 from toga.style.pack import Pack, COLUMN, ROW, BOLD
 
+from mangnify.app import HEIGHT, WIDTH
+
 JPG_QUALITY_LABEL = "JPG Quality:"
 TRIM_MARGINS_LABEL = "Trim Margins:"
 TRIM_LIMIT_LABEL = "Trim Limit:"
@@ -110,6 +112,8 @@ def on_change_trim_margins_checkbox(widget, app):
         app.trim_margins_options_container.add(app.trim_limit_container)
     else:
         app.trim_margins_options_container.remove(app.trim_limit_container)
+
+    app.main_window.size = (WIDTH, HEIGHT)
 
 
 def build_add_margins_container(app):
