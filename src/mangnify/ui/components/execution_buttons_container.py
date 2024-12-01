@@ -38,24 +38,27 @@ def on_press_start_button(widget, app):
     Handle the press event on the start button.
     """
 
-    logger.info("Options Selected:")
-    logger.info(f"Input Directory: {app.input_directory}")
-    logger.info(f"Output Directory: {app.output_directory}")
-    logger.info(f"Working Directory: {app.working_directory}")
-    logger.info(f"Is Processing Needed: {app.is_processing_needed}")
-    logger.info(f"Is Keep Images: {app.is_keep_images}")
-    logger.info(f"JPG Quality: {app.jpg_quality}")
-    logger.info(f"Is Trim Images: {app.is_trim_images}")
-    logger.info(f"Trim Limit: {app.trim_limit}")
-    logger.info(f"Add Margins: {app.add_margins}")
-    logger.info(f"Is Rotate Spread: {app.is_rotate_spread}")
-    logger.info(f"Scale Factor: {app.scale_factor}")
-    logger.info(f"Is CBZ Needed: {app.is_cbz_needed}")
-    logger.info(f"Is AZW3 Needed: {app.is_azw3_needed}")
-    logger.info(f"Is Grayscale: {app.is_grayscale}")
-    logger.info(f"Compression Level: {app.compression_level}")
-    logger.info(f"Device Height: {app.device_height}")
-    logger.info(f"Device Width: {app.device_width}")
+    options_selected = (
+        f"\n\n\nOptions Selected:\n\n"
+        f"Input Directory:      {app.input_directory}\n"
+        f"Output Directory:     {app.output_directory}\n"
+        f"Working Directory:    {app.working_directory}\n"
+        f"Is Processing Needed: {app.is_processing_needed}\n"
+        f"Is Keep Images:       {app.is_keep_images}\n"
+        f"JPG Quality:          {app.jpg_quality}\n"
+        f"Is Trim Images:       {app.is_trim_images}\n"
+        f"Trim Limit:           {app.trim_limit}\n"
+        f"Add Margins:          {app.add_margins}\n"
+        f"Is Rotate Spread:     {app.is_rotate_spread}\n"
+        f"Scale Factor:         {app.scale_factor}\n"
+        f"Is CBZ Needed:        {app.is_cbz_needed}\n"
+        f"Is AZW3 Needed:       {app.is_azw3_needed}\n"
+        f"Is Grayscale:         {app.is_grayscale}\n"
+        f"Compression Level:    {app.compression_level}\n"
+        f"Device Height:        {app.device_height}\n"
+        f"Device Width:         {app.device_width}\n\n\n"
+    )
+    logger.info(options_selected)
 
 
 def on_press_abort_button(widget, app):
