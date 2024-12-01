@@ -7,4 +7,4 @@ def build_progress_bar(app):
     Build the progress bar.
     """
 
-    app.progress_bar = toga.ProgressBar(style=Pack(padding=(10, 40)), max=100)
+    app.progress_bar = toga.ProgressBar(style=Pack(padding=(3, 40)), max=100)
