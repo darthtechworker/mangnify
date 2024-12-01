@@ -1,5 +1,5 @@
 import toga
-from toga.style.pack import Pack, COLUMN, ROW, BOLD
+from toga.style.pack import BOLD, COLUMN, ROW, Pack
 
 TITLE = "Title:"
 TITLE_PLACEHOLDER = "Manga|Comic Title (required)"

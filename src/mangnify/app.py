@@ -1,5 +1,6 @@
 import toga
-from toga.style.pack import Pack, COLUMN
+from toga.style.pack import COLUMN, Pack
+
 from .ui.main import build_ui
 
 WIDTH = 360

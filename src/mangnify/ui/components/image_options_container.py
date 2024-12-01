@@ -1,5 +1,5 @@
 import toga
-from toga.style.pack import Pack, COLUMN, ROW, BOLD
+from toga.style.pack import BOLD, COLUMN, ROW, Pack
 
 JPG_QUALITY_LABEL = "JPG Quality:"
 TRIM_MARGINS_LABEL = "Trim Margins:"

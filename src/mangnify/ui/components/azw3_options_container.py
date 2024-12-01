@@ -1,5 +1,5 @@
 import toga
-from toga.style.pack import Pack, COLUMN, ROW, BOLD
+from toga.style.pack import BOLD, COLUMN, ROW, Pack
 
 GRAYSCALE_LABEL = "Grayscale:"
 COMPRESSION_LEVEL_LABEL = "Compression:"

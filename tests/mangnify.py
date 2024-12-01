@@ -1,8 +1,9 @@
 import os
 import sys
 import tempfile
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def run_tests():

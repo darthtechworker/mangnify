@@ -1,5 +1,5 @@
 import toga
-from toga.style.pack import Pack, ROW
+from toga.style.pack import ROW, Pack
 
 START_BUTTON_LABEL = "Start"
 ABORT_BUTTON_LABEL = "Abort"

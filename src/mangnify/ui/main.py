@@ -2,6 +2,7 @@ from mangnify.ui.components.azw3_options_container import build_azw3_options_con
 from mangnify.ui.components.comic_info_options_container import (
     build_comic_info_options_container,
 )
+from mangnify.ui.components.dynamic_container import build_dynamic_container
 from mangnify.ui.components.execution_buttons_container import (
     build_execution_buttons_container,
 )
@@ -12,10 +13,9 @@ from mangnify.ui.components.select_input_directory import (
     build_select_input_directory_button,
 )
 from mangnify.ui.components.select_options_dropdown import (
-    build_select_options_dropdown,
     OPTIONS,
+    build_select_options_dropdown,
 )
-from mangnify.ui.components.dynamic_container import build_dynamic_container
 
 
 def build_ui(app):

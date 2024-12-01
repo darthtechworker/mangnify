@@ -1,7 +1,8 @@
 import asyncio
 import os
+
 import toga
-from toga.style.pack import Pack, BOLD
+from toga.style.pack import BOLD, Pack
 
 SELECT_INPUT_DIRECTORY_LABEL = "Select Input Directory"
 
