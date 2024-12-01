@@ -66,11 +66,12 @@ def on_press_start_button(widget, app):
     toggle_ui(app, False)
     app.progress_bar.value = 0
     app.log_area.value = ""
-    update_log_area_callback(app, "Mangnifying...")
 
     def task():
 
         try:
+            update_log_area_callback(app, "Mangnifying...")
+
             if app.is_processing_needed:
                 update_log_area_callback(app, "\nProcessing images...")
                 update_log_area_callback(app, "Images processed.")
@@ -83,8 +84,12 @@ def on_press_start_button(widget, app):
                 update_log_area_callback(app, "\nCreating AZW3...")
                 update_log_area_callback(app, "AZW3 created.")
 
+            update_log_area_callback(app, "\nMangnification completed.")
+
         except Exception as e:
-            logger.error(f"Error: {e}")
+            logger.error(e)
+            update_log_area_callback(app, f"\n{e}")
+
         finally:
             toggle_ui(app, True)
 
