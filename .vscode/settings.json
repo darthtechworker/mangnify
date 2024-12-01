@@ -11,6 +11,10 @@
     "ruff.enable": true,
 
     // Lint but don't fix
-    "ruff.lint.args": ["--no-fix"],
+    "ruff.lint.args": ["--no-fix",],
     
+    // Enable ruff as an organizer to auto-sort imports
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always"
+    },
 }
