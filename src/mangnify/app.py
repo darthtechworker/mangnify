@@ -1,10 +1,14 @@
 import toga
 from toga.style.pack import COLUMN, Pack
 
+from mangnify.utils import logging
+
 from .ui.main import build_ui
 
 WIDTH = 360
 HEIGHT = 400
+
+logger = logging.getLogger(__name__)
 
 
 class Mangnify(toga.App):
@@ -12,6 +16,8 @@ class Mangnify(toga.App):
         """
         App startup
         """
+
+        logger.info("Starting up the app...")
 
         # Directory paths
         self.input_directory = None
@@ -49,6 +55,8 @@ class Mangnify(toga.App):
         build_ui(self)
 
         self.main_window.show()
+
+        logger.info("App started.")
 
     def resize_window(self):
         """
