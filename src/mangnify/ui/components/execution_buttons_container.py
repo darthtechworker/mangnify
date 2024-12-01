@@ -37,6 +37,7 @@ def on_press_start_button(widget, app):
     """
     Handle the press event on the start button.
     """
+
     logger.info("Options Selected:")
     logger.info(f"Input Directory: {app.input_directory}")
     logger.info(f"Output Directory: {app.output_directory}")
