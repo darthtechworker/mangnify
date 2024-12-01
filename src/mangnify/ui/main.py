@@ -6,6 +6,7 @@ from mangnify.ui.components.execution_buttons_container import (
     build_execution_buttons_container,
 )
 from mangnify.ui.components.image_options_container import build_image_options_container
+from mangnify.ui.components.progress_bar import build_progress_bar
 from mangnify.ui.components.select_input_directory import (
     build_select_input_directory_button,
 )
@@ -28,11 +29,13 @@ def build_ui(app):
     build_comic_info_options_container(app)
     build_azw3_options_container(app)
     build_execution_buttons_container(app)
+    build_progress_bar(app)
 
     app.main_box.add(app.select_input_directory_button)
     app.main_box.add(app.select_options_dropdown)
     app.main_box.add(app.dynamic_container)
     app.main_box.add(app.execution_buttons_container)
+    app.main_box.add(app.progress_bar)
 
     init_ui(app)
 
@@ -53,3 +56,5 @@ def init_ui(app):
     # TODO: read and update comic info options from comic info file here
 
     app.abort_button.enabled = False
+
+    app.progress_bar.value = 0
