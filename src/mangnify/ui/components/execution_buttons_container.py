@@ -48,10 +48,13 @@ def on_press_start_button(widget, app):
     logger.info(f"Trim Limit: {app.trim_limit}")
     logger.info(f"Add Margins: {app.add_margins}")
     logger.info(f"Is Rotate Spread: {app.is_rotate_spread}")
+    logger.info(f"Scale Factor: {app.scale_factor}")
     logger.info(f"Is CBZ Needed: {app.is_cbz_needed}")
     logger.info(f"Is AZW3 Needed: {app.is_azw3_needed}")
     logger.info(f"Is Grayscale: {app.is_grayscale}")
     logger.info(f"Compression Level: {app.compression_level}")
+    logger.info(f"Device Height: {app.device_height}")
+    logger.info(f"Device Width: {app.device_width}")
 
 
 def on_press_abort_button(widget, app):
