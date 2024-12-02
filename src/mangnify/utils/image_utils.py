@@ -26,11 +26,12 @@ def trim_margins(image: np.ndarray, trim_limit: int) -> np.ndarray:
     """
     Trims the empty margins from the image.
 
-    Args:
-        image (numpy.ndarray): The input image.
+    Parameters:
+    image (np.ndarray): The image to trim.
+    trim_limit (int): The limit in percentage of width and height to trim.
 
     Returns:
-        numpy.ndarray: The cropped image without empty margins.
+    np.ndarray: The trimmed image.
     """
 
     trim_limit = trim_limit / 100.0
@@ -59,6 +60,37 @@ def trim_margins(image: np.ndarray, trim_limit: int) -> np.ndarray:
         return trimmed
     else:
         return image
+
+
+def add_margins(image: np.ndarray, margin: int) -> np.ndarray:
+    """
+    Add margin to the image.
+
+    Parameters:
+    image (np.ndarray): The image to add margin.
+    margin (int): The margin in percentage of longer edge.
+
+    Returns:
+    np.ndarray: The image with margin.
+    """
+
+    height, width = image.shape[:2]
+    longer_edge = max(height, width)
+    margin_size = int(longer_edge * margin / 100)
+
+    top = bottom = left = right = margin_size
+
+    if height > width:
+        left = right = margin_size
+    else:
+        top = bottom = margin_size
+
+    color = [255, 255, 255]
+    bordered = cv2.copyMakeBorder(
+        image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color
+    )
+
+    return bordered
 
 
 def save_image(image_path: str, image: np.ndarray, jpg_quality: int) -> None:
