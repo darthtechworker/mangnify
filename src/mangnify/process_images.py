@@ -1,5 +1,5 @@
 from mangnify.utils import logging
-from mangnify.utils.file_utils import (
+from mangnify.utils.file import (
     copy_images,
     create_directory,
     get_supported_images,
