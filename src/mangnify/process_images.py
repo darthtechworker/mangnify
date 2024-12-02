@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 def process_images(app) -> None:
     """
-    Start processing the images.
+    Process the images.
     """
 
     logger.info("Processing images...")

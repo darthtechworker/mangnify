@@ -3,6 +3,8 @@ import threading
 import toga
 from toga.style.pack import ROW, Pack
 
+from mangnify.create_azw3 import create_azw3
+from mangnify.create_cbz import create_cbz
 from mangnify.process_images import process_images
 from mangnify.utils import logging
 from mangnify.utils.ui_utils import toggle_ui, update_log_area_callback
@@ -78,12 +80,10 @@ def on_press_start_button(widget, app):
                 process_images(app)
 
             if app.is_cbz_needed:
-                update_log_area_callback(app, "\nCreating CBZ...")
-                update_log_area_callback(app, "CBZ created.")
+                create_cbz(app)
 
             if app.is_azw3_needed:
-                update_log_area_callback(app, "\nCreating AZW3...")
-                update_log_area_callback(app, "AZW3 created.")
+                create_azw3(app)
 
             update_log_area_callback(app, "\nMangnification completed.")
 
