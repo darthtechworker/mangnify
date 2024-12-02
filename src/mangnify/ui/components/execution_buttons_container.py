@@ -7,7 +7,7 @@ from mangnify.create_azw3 import create_azw3
 from mangnify.create_cbz import create_cbz
 from mangnify.process_images import process_images
 from mangnify.utils import logging
-from mangnify.utils.ui_utils import toggle_ui, update_log_area_callback
+from mangnify.utils.ui_utils import is_valid_input, toggle_ui, update_log_area_callback
 
 START_BUTTON_LABEL = "Start"
 ABORT_BUTTON_LABEL = "Abort"
@@ -66,35 +66,37 @@ def on_press_start_button(widget, app):
     )
     logger.info(options_selected)
 
-    app.abort_event.clear()
-    toggle_ui(app, False)
-    app.progress_bar.value = 0
-    app.log_area.value = ""
+    if is_valid_input(app):
 
-    def task():
+        app.abort_event.clear()
+        toggle_ui(app, False)
+        app.progress_bar.value = 0
+        app.log_area.value = ""
 
-        try:
-            update_log_area_callback(app, "Mangnifying...")
+        def task():
 
-            if app.is_processing_needed:
-                process_images(app)
+            try:
+                update_log_area_callback(app, "Mangnifying...")
 
-            if app.is_cbz_needed:
-                create_cbz(app)
+                if app.is_processing_needed:
+                    process_images(app)
 
-            if app.is_azw3_needed:
-                create_azw3(app)
+                if app.is_cbz_needed:
+                    create_cbz(app)
 
-            update_log_area_callback(app, "\nMangnification completed.")
+                if app.is_azw3_needed:
+                    create_azw3(app)
 
-        except Exception as e:
-            logger.error(e)
-            update_log_area_callback(app, f"\n{e}")
+                update_log_area_callback(app, "\nMangnification completed.")
 
-        finally:
-            toggle_ui(app, True)
+            except Exception as e:
+                logger.error(e)
+                update_log_area_callback(app, f"\n{e}")
 
-    threading.Thread(target=task).start()
+            finally:
+                toggle_ui(app, True)
+
+        threading.Thread(target=task).start()
 
 
 def on_press_abort_button(widget, app):
