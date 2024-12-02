@@ -106,7 +106,7 @@ def on_change_trim_margins_checkbox(widget, app):
     Handle the toggle event on the trim margins checkbox.
     """
 
-    app.is_trim_margin = widget.value
+    app.is_trim_margins = widget.value
 
     if widget.value:
         app.trim_margins_options_container.add(app.trim_limit_container)
