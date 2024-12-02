@@ -14,7 +14,7 @@ def build_grayscale_container(app):
 
     app.grayscale_label = toga.Label(
         text=GRAYSCALE_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 81, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 79, 0, 0)),
     )
     app.grayscale_checkbox = toga.Switch(
         text="",
