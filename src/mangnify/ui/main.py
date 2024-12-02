@@ -60,7 +60,7 @@ def init_ui(app):
 
     app.select_options_dropdown.value = OPTIONS[0]
 
-    app.jpg_quality_dropdown.value = "90%"
+    app.jpg_quality_dropdown.value = "100%"
     app.trim_margins_checkbox.value = False
     on_change_trim_margins_checkbox(app.trim_margins_checkbox, app)
     app.trim_limit_dropdown.value = "10%"
