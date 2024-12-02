@@ -4,7 +4,7 @@ from mangnify.utils.file import (
     create_directory,
     get_supported_images,
 )
-from mangnify.utils.image_utils import (
+from mangnify.utils.image import (
     add_margins,
     load_image,
     rotate_spread,
