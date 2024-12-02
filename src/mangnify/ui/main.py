@@ -4,6 +4,7 @@ from mangnify.ui.components.azw3_options_container import (
 )
 from mangnify.ui.components.comic_info_options_container import (
     build_comic_info_options_container,
+    on_change_manga_checkbox,
 )
 from mangnify.ui.components.dynamic_container import build_dynamic_container
 from mangnify.ui.components.execution_buttons_container import (
@@ -69,7 +70,8 @@ def init_ui(app):
     on_change_rotate_spread_checkbox(app.rotate_spread_checkbox, app)
     app.scale_dropdown.value = "1x"
 
-    # TODO: read and update comic info options from comic info file here
+    app.manga_checkbox.value = False
+    on_change_manga_checkbox(app.manga_checkbox, app)
 
     app.grayscale_checkbox.value = True
     on_change_grayscale_checkbox(app.grayscale_checkbox, app)

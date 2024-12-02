@@ -9,6 +9,7 @@ VOLUME = "Volume:"
 VOLUME_PLACEHOLDER = "Volume Number (optional)"
 WRITER = "Writer:"
 WRITER_PLACEHOLDER = "Writer Name (optional)"
+MANGA = "Manga:"
 
 
 def build_title_container(app):
@@ -86,9 +87,38 @@ def build_writer_container(app):
         placeholder=WRITER_PLACEHOLDER,
     )
 
-    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 10, 20)))
+    app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 15, 20)))
     app.writer_container.add(app.writer_label)
     app.writer_container.add(app.writer_input)
+
+
+def build_manga_container(app):
+    """
+    Build the manga container.
+    """
+
+    app.manga_label = toga.Label(
+        text=MANGA,
+        style=Pack(font_weight=BOLD, padding=(0, 102, 0, 0)),
+    )
+    app.manga_checkbox = toga.Switch(
+        text="",
+        on_change=lambda widget: on_change_manga_checkbox(widget, app),
+    )
+
+    app.manga_container = toga.Box(
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=27)
+    )
+    app.manga_container.add(app.manga_label)
+    app.manga_container.add(app.manga_checkbox)
+
+
+def on_change_manga_checkbox(widget, app):
+    """
+    Handle the toggle event on the manga checkbox.
+    """
+
+    app.is_manga = widget.value
 
 
 def build_comic_info_options_container(app):
@@ -100,5 +130,6 @@ def build_comic_info_options_container(app):
     build_series_container(app)
     build_volume_container(app)
     build_writer_container(app)
+    build_manga_container(app)
 
     app.comic_info_options_container = toga.Box(style=Pack(direction=COLUMN))

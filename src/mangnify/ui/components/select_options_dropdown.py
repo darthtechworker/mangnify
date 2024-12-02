@@ -120,3 +120,4 @@ def update_comic_info_options_container(widget, app):
         app.comic_info_options_container.add(app.volume_container)
 
     app.comic_info_options_container.add(app.writer_container)
+    app.comic_info_options_container.add(app.manga_container)
