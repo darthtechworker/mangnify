@@ -20,6 +20,7 @@ test_sources = [
 ]
 
 requires = [
+    "opencv-python-headless==4.10.0.84",
 ]
 test_requires = [
     "pytest",
