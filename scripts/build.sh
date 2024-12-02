@@ -11,6 +11,8 @@ if [[ "$OSTYPE" == "darwin"* ]] && [[ "$(uname -m)" == "arm64" ]]; then
     
     mv dist/Mangnify-*.dmg "dist/Mangnify_macOS_arm_64-v${VERSION}.dmg"
 
+    rm -rf build
+
 else
     echo "This script is intended to be run on macOS with Apple Silicon (arm64) only"
 fi
