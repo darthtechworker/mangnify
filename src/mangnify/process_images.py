@@ -11,7 +11,7 @@ from mangnify.utils.image_utils import (
     save_image,
     trim_margins,
 )
-from mangnify.utils.ui_utils import (
+from mangnify.utils.ui import (
     update_log_area_callback,
     update_progress_bar_callback,
 )

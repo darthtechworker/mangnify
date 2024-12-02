@@ -1,5 +1,5 @@
 from mangnify.utils import logging
-from mangnify.utils.ui_utils import update_log_area_callback
+from mangnify.utils.ui import update_log_area_callback
 
 logger = logging.getLogger(__name__)
 

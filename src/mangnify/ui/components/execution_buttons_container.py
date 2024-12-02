@@ -7,7 +7,7 @@ from mangnify.create_azw3 import create_azw3
 from mangnify.create_cbz import create_cbz
 from mangnify.process_images import process_images
 from mangnify.utils import logging
-from mangnify.utils.ui_utils import is_valid_input, toggle_ui, update_log_area_callback
+from mangnify.utils.ui import is_valid_input, toggle_ui, update_log_area_callback
 
 START_BUTTON_LABEL = "Start"
 ABORT_BUTTON_LABEL = "Abort"
