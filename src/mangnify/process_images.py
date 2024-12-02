@@ -1,5 +1,9 @@
 from mangnify.utils import logging
-from mangnify.utils.file_utils import create_directory, get_supported_images
+from mangnify.utils.file_utils import (
+    copy_images,
+    create_directory,
+    get_supported_images,
+)
 from mangnify.utils.image_utils import (
     add_margins,
     load_image,
@@ -61,6 +65,11 @@ def process_images(app) -> None:
             current_image_count += 1
             progress = (current_image_count / total_images) * 100
             update_progress_bar_callback(app, progress)
+
+        if app.is_keep_images:
+            processed_images_directory = app.output_directory / "Processed Images"
+            create_directory(processed_images_directory)
+            copy_images(app.working_directory, processed_images_directory)
 
     except Exception as e:
         logger.exception(e)

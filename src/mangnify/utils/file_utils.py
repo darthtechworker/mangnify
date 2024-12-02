@@ -1,4 +1,5 @@
 import os
+import shutil
 from typing import List
 
 SUPPORTED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
@@ -35,3 +36,19 @@ def get_supported_images(directory_path) -> List[str]:
     image_names.sort()
 
     return image_names
+
+
+def copy_images(input_directory, output_directory) -> None:
+    """
+    Copy images from input directory to output directory.
+
+    Parameters:
+    input_directory (str): The path of the input directory.
+    output_directory (str): The path of the output directory.
+    """
+
+    for image_name in os.listdir(input_directory):
+        if image_name.lower().endswith(tuple(SUPPORTED_IMAGE_EXTENSIONS)):
+            image_path = os.path.join(input_directory, image_name)
+            output_path = os.path.join(output_directory, image_name)
+            shutil.copy(image_path, output_path)
