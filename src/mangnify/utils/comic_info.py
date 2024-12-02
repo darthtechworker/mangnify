@@ -8,9 +8,14 @@ def read_comic_info(app):
     """
     Read the comic info from the input directory and update the UI elements.
     """
-    comic_info_path = os.path.join(app.input_directory, "ComicInfo.xml")
 
-    if os.path.exists(comic_info_path):
+    comic_info_path = None
+    for file_name in os.listdir(app.input_directory):
+        if file_name.lower() == "comicinfo.xml":
+            comic_info_path = os.path.join(app.input_directory, file_name)
+            break
+
+    if comic_info_path:
         tree = ET.parse(comic_info_path)
         root = tree.getroot()
 
