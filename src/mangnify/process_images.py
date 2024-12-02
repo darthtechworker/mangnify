@@ -1,6 +1,12 @@
 from mangnify.utils import logging
 from mangnify.utils.file_utils import create_directory, get_supported_images
-from mangnify.utils.image_utils import add_margins, load_image, save_image, trim_margins
+from mangnify.utils.image_utils import (
+    add_margins,
+    load_image,
+    rotate_spread,
+    save_image,
+    trim_margins,
+)
 from mangnify.utils.ui_utils import (
     update_log_area_callback,
     update_progress_bar_callback,
@@ -42,6 +48,9 @@ def process_images(app) -> None:
 
             if app.add_margins > 0:
                 image = add_margins(image, app.add_margins)
+
+            if app.is_rotate_spread:
+                image = rotate_spread(image)
 
             new_image_name = image_name.split(".")[0] + "_mangnified.jpg"
             new_image_path = app.working_directory / new_image_name

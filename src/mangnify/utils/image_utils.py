@@ -93,6 +93,27 @@ def add_margins(image: np.ndarray, margin: int) -> np.ndarray:
     return bordered
 
 
+def rotate_spread(image: np.ndarray) -> np.ndarray:
+    """
+    Rotate the image 90 degrees if it is a spread.
+
+    Parameters:
+    image (np.ndarray): The image to rotate.
+
+    Returns:
+    np.ndarray: The rotated image.
+    """
+
+    height, width = image.shape[:2]
+
+    if width > height:
+        rotated = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        return rotated
+    else:
+        return image
+
+
 def save_image(image_path: str, image: np.ndarray, jpg_quality: int) -> None:
     """
     Save the image.
