@@ -3,6 +3,8 @@ import asyncio
 import toga
 from toga.style.pack import BOLD, Pack
 
+from mangnify.utils.comic_info import read_comic_info
+
 SELECT_INPUT_DIRECTORY_LABEL = "Select Input Directory"
 
 
@@ -34,3 +36,4 @@ async def on_click_select_input_directory(widget, app):
         app.input_directory = selected_folder
         app.output_directory = app.input_directory / "output"
         app.working_directory = app.output_directory / ".tmp"
+        read_comic_info(app)
