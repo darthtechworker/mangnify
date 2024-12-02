@@ -32,7 +32,7 @@ class Mangnify(toga.App):
 
         # Image options
         self.jpg_quality = None
-        self.is_trim_images = None
+        self.is_trim_margins = None
         self.trim_limit = None
         self.add_margins = None
         self.is_rotate_spread = None

@@ -52,7 +52,7 @@ def on_press_start_button(widget, app):
         f"Is Processing Needed: {app.is_processing_needed}\n"
         f"Is Keep Images:       {app.is_keep_images}\n"
         f"JPG Quality:          {app.jpg_quality}\n"
-        f"Is Trim Images:       {app.is_trim_images}\n"
+        f"Is Trim Margins:      {app.is_trim_margins}\n"
         f"Trim Limit:           {app.trim_limit}\n"
         f"Add Margins:          {app.add_margins}\n"
         f"Is Rotate Spread:     {app.is_rotate_spread}\n"
