@@ -54,3 +54,15 @@ def update_progress_bar_callback(app, value):
     """
 
     app.loop.call_later(0, update_progress_bar, app, value)
+
+
+def is_valid_input(app):
+    """
+    Validate the input.
+    """
+
+    if not app.input_directory:
+        update_log_area_callback(app, "Please select the input directory.")
+        return False
+
+    return True
