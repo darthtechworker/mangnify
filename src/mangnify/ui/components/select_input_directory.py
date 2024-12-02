@@ -1,5 +1,4 @@
 import asyncio
-import os
 
 import toga
 from toga.style.pack import BOLD, Pack
@@ -33,5 +32,5 @@ async def on_click_select_input_directory(widget, app):
 
     if selected_folder is not None:
         app.input_directory = selected_folder
-        app.output_directory = os.path.join(app.input_directory, "output")
-        app.working_directory = os.path.join(app.output_directory, ".tmp")
+        app.output_directory = app.input_directory / "output"
+        app.working_directory = app.output_directory / ".tmp"
