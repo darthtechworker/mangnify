@@ -34,6 +34,6 @@ async def on_click_select_input_directory(widget, app):
 
     if selected_folder is not None:
         app.input_directory = selected_folder
-        app.output_directory = app.input_directory / "output"
+        app.output_directory = app.input_directory / "Output"
         app.working_directory = app.output_directory / ".tmp"
         read_comic_info(app)
