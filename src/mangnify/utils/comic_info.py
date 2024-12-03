@@ -2,6 +2,7 @@ import os
 import xml.etree.ElementTree as ET
 
 from mangnify.ui.components.comic_info_options_container import on_change_manga_checkbox
+from mangnify.utils.ui import update_log_area_callback
 
 
 def read_comic_info(app):
@@ -41,3 +42,27 @@ def read_comic_info(app):
     app.writer_input.value = writer
     app.manga_checkbox.value = manga
     on_change_manga_checkbox(app.manga_checkbox, app)
+
+
+def write_comic_info(app):
+    """
+    Write the comic info to the working directory.
+    """
+
+    update_log_area_callback(app, "Writing ComicInfo.xml...")
+
+    comic_info_path = os.path.join(app.working_directory, "ComicInfo.xml")
+
+    root = ET.Element("ComicInfo")
+    ET.SubElement(root, "Title").text = app.title_input.value
+    ET.SubElement(root, "Series").text = app.series_input.value
+    ET.SubElement(root, "Volume").text = app.volume_input.value
+    ET.SubElement(root, "Writer").text = app.writer_input.value
+    ET.SubElement(root, "Manga").text = (
+        "YesAndRightToLeft" if app.manga_checkbox.value else "No"
+    )
+
+    tree = ET.ElementTree(root)
+    tree.write(comic_info_path, encoding="utf-8", xml_declaration=True)
+
+    update_log_area_callback(app, "ComicInfo.xml written.")
