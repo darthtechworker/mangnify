@@ -125,3 +125,33 @@ def save_image(image_path: str, image: np.ndarray, jpg_quality: int) -> None:
     """
 
     cv2.imwrite(image_path, image, [int(cv2.IMWRITE_JPEG_QUALITY), jpg_quality])
+
+
+def resize_image(image: np.ndarray, max_height: int, max_width: int) -> np.ndarray:
+    """
+    Resize the image while maintaining the aspect ratio.
+
+    Parameters:
+    image (np.ndarray): The image to resize.
+    max_height (int): The maximum height of the resized image.
+    max_width (int): The maximum width of the resized image.
+
+    Returns:
+    np.ndarray: The resized image.
+    """
+
+    height, width = image.shape[:2]
+    aspect_ratio = width / height
+
+    if width > height:
+        new_width = min(width, max_width)
+        new_height = int(new_width / aspect_ratio)
+    else:
+        new_height = min(height, max_height)
+        new_width = int(new_height * aspect_ratio)
+
+    resized = cv2.resize(
+        image, (new_width, new_height), interpolation=cv2.INTER_LANCZOS4
+    )
+
+    return resized

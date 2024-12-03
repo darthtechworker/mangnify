@@ -1,9 +1,35 @@
+import ctypes
 import os
+import platform
 import re
 import shutil
 import unicodedata
 import zipfile
 from typing import List
+
+from mangnify.utils import logging
+
+logger = logging.getLogger(__name__)
+
+hi_res_azw3_lib = None
+
+if platform.system() == "Darwin":
+    hi_res_azw3_lib = hi_res_azw3_lib = ctypes.CDLL(
+        os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "../resources/hiresazw3.dylib")
+        )
+    )
+
+hi_res_azw3_lib.CreateAZW3.argtypes = [
+    ctypes.c_char_p,
+    ctypes.c_char_p,
+    ctypes.c_char_p,
+    ctypes.c_char_p,
+    ctypes.c_int,
+    ctypes.c_int,
+]
+
+hi_res_azw3_lib.CreateAZW3.restype = ctypes.c_char_p
 
 SUPPORTED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
 
@@ -142,3 +168,43 @@ def package_cbz(input_directory, output_directory, title) -> None:
         comic_info_path = os.path.join(input_directory, "ComicInfo.xml")
         if os.path.exists(comic_info_path):
             cbz_file.write(comic_info_path, arcname="ComicInfo.xml")
+
+
+def package_azw3(
+    input_directory, output_directory, title, writer, is_manga, compression_level
+) -> str:
+    """
+    Package images into a AZW3 file.
+
+    Parameters:
+    input_directory (str): The path of the input directory.
+    output_directory (str): The path of the output directory.
+    title (str): The title of the Comic/Manga.
+    writer (str): The writer of the Comic/Manga.
+    is_manga (bool): Whether the content is a manga.
+    compression_level (int): The compression level of the images in the AZW3 file.
+
+    Returns:
+    str: The result of the operation.
+    """
+    input_directory_c = ctypes.c_char_p(str(input_directory).encode("utf-8"))
+    output_directory_c = ctypes.c_char_p(str(output_directory).encode("utf-8"))
+    title_c = ctypes.c_char_p(title.encode("utf-8"))
+    writer_c = ctypes.c_char_p(writer.encode("utf-8"))
+    is_manga_c = ctypes.c_int(is_manga)
+    compression_level_c = ctypes.c_int(compression_level)
+
+    # Call the CreateAZW3 function from the shared library
+    result = hi_res_azw3_lib.CreateAZW3(
+        input_directory_c,
+        output_directory_c,
+        title_c,
+        writer_c,
+        is_manga_c,
+        compression_level_c,
+    )
+
+    result = result.decode("utf-8")
+    logger.info(f"{result}")
+
+    return result
