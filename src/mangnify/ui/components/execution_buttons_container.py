@@ -7,6 +7,7 @@ from mangnify.create_azw3 import create_azw3
 from mangnify.create_cbz import create_cbz
 from mangnify.process_images import process_images
 from mangnify.utils import logging
+from mangnify.utils.file import cleanup
 from mangnify.utils.ui import is_valid_input, toggle_ui, update_log_area_callback
 
 START_BUTTON_LABEL = "Start"
@@ -66,17 +67,20 @@ def on_press_start_button(widget, app):
     )
     logger.info(options_selected)
 
+    app.abort_event.clear()
+    app.progress_bar.value = 0
+    app.log_area.value = ""
+
     if is_valid_input(app):
 
-        app.abort_event.clear()
         toggle_ui(app, False)
-        app.progress_bar.value = 0
-        app.log_area.value = ""
 
         def task():
 
             try:
                 update_log_area_callback(app, "Mangnifying...")
+
+                cleanup(app.output_directory)
 
                 if app.is_processing_needed:
                     process_images(app)
@@ -86,6 +90,8 @@ def on_press_start_button(widget, app):
 
                 if app.is_azw3_needed:
                     create_azw3(app)
+
+                cleanup(app.working_directory)
 
                 update_log_area_callback(app, "\nMangnification completed.")
 
