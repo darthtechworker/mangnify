@@ -6,7 +6,7 @@ TRIM_MARGINS_LABEL = "Trim Margins:"
 TRIM_LIMIT_LABEL = "Trim Limit:"
 ADD_MARGINS_LABEL = "Add Margins:"
 ROTATE_SPREADS_LABEL = "Rotate Spreads:"
-SCALE_LABEL = "Scale:"
+SCALE_LABEL = "A.I. Upscale:"
 SCALE_OPTIONS = ["None", "1x", "2x", "3x", "4x"]
 
 
@@ -182,7 +182,7 @@ def build_scale_container(app):
 
     app.scale_label = toga.Label(
         text=SCALE_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 86, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 44, 0, 0)),
     )
     app.scale_dropdown = toga.Selection(
         items=SCALE_OPTIONS,
