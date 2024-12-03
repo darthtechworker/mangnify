@@ -5,7 +5,7 @@ JPG_QUALITY_LABEL = "JPG Quality:"
 TRIM_MARGINS_LABEL = "Trim Margins:"
 TRIM_LIMIT_LABEL = "Trim Limit:"
 ADD_MARGINS_LABEL = "Add Margins:"
-ROTATE_SPREAD_LABEL = "Rotate Spread:"
+ROTATE_SPREADS_LABEL = "Rotate Spreads:"
 SCALE_LABEL = "Scale:"
 SCALE_OPTIONS = ["None", "1x", "2x", "3x", "4x"]
 
@@ -152,8 +152,8 @@ def build_rotate_spread_container(app):
     """
 
     app.rotate_spread_label = toga.Label(
-        text=ROTATE_SPREAD_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 54, 0, 0)),
+        text=ROTATE_SPREADS_LABEL,
+        style=Pack(font_weight=BOLD, padding=(0, 46, 0, 0)),
     )
     app.rotate_spread_checkbox = toga.Switch(
         text="",
