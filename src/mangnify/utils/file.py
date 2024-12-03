@@ -3,6 +3,7 @@ import os
 import platform
 import re
 import shutil
+import subprocess
 import unicodedata
 import zipfile
 from typing import List
@@ -208,3 +209,23 @@ def package_azw3(
     logger.info(f"{result}")
 
     return result
+
+
+def open_directory_in_ui(directory_path: str) -> None:
+    """
+    Open the directory in the file explorer.
+
+    Parameters:
+    directory_path (str): The path of the directory to open.
+    """
+
+    system = platform.system()
+
+    if system == "Darwin":  # macOS
+        subprocess.run(["open", directory_path], check=True)
+    elif system == "Windows":  # Windows
+        os.startfile(directory_path)
+    elif system == "Linux":  # Linux
+        subprocess.run(["xdg-open", directory_path], check=True)
+    else:
+        print(f"Unsupported operating system: {system}")

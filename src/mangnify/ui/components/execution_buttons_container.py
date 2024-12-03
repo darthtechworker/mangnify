@@ -7,7 +7,7 @@ from mangnify.create_azw3 import create_azw3
 from mangnify.create_cbz import create_cbz
 from mangnify.process_images import process_images
 from mangnify.utils import logging
-from mangnify.utils.file import cleanup
+from mangnify.utils.file import cleanup, open_directory_in_ui
 from mangnify.utils.ui import is_valid_input, toggle_ui, update_log_area_callback
 
 START_BUTTON_LABEL = "Start"
@@ -94,6 +94,8 @@ def on_press_start_button(widget, app):
                 cleanup(app.working_directory)
 
                 update_log_area_callback(app, "\nMangnification completed.")
+
+                open_directory_in_ui(app.output_directory)
 
             except Exception as e:
                 logger.error(e)
