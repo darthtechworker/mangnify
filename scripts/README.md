@@ -8,6 +8,8 @@
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
+    Run the post install commands.
+
 2) Install Python 3.12
 
     ```bash
