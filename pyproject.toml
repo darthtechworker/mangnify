@@ -22,6 +22,7 @@ test_sources = [
 requires = [
     "opencv-python-headless==4.10.0.84",
     "realcugan-ncnn-py==2.0.0",
+    "pyopencl==2024.3",
 ]
 test_requires = [
     "pytest",
