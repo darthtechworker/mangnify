@@ -6,10 +6,12 @@ from mangnify.utils.file import (
 )
 from mangnify.utils.image import (
     add_margins,
+    init_realcugan,
     load_image,
     rotate_spread,
     save_image,
     trim_margins,
+    upscale_image,
 )
 from mangnify.utils.ui import (
     update_log_area_callback,
@@ -38,6 +40,9 @@ def process_images(app) -> None:
         original_size = 0
         processed_size = 0
 
+        if app.scale_factor is not None:
+            realcugan = init_realcugan(app, app.scale_factor)
+
         for image_name in image_names:
             if app.abort_event.is_set():
                 raise Exception("Aborted by user.")
@@ -55,6 +60,9 @@ def process_images(app) -> None:
 
             if app.is_rotate_spread:
                 image = rotate_spread(image)
+
+            if app.scale_factor is not None:
+                image = upscale_image(image, realcugan)
 
             new_image_name = image_name.split(".")[0] + "_mangnified.jpg"
             new_image_path = app.working_directory / new_image_name

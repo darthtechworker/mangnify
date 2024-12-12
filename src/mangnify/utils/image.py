@@ -1,5 +1,12 @@
 import cv2
 import numpy as np
+import pyopencl as cl
+from realcugan_ncnn_py import Realcugan
+
+from mangnify.utils import logging
+from mangnify.utils.ui import update_log_area_callback
+
+logger = logging.getLogger(__name__)
 
 
 def load_image(image_path: str, is_grayscale: bool = False) -> np.ndarray:
@@ -155,3 +162,60 @@ def resize_image(image: np.ndarray, max_height: int, max_width: int) -> np.ndarr
     )
 
     return resized
+
+
+def init_realcugan(app, scale_factor: int) -> Realcugan:
+    """
+    Initialize the Realcugan model.
+    Choose GPU if available, otherwise use CPU.
+    If multiple GPUs are available, choose the one with the most memory.
+
+    Parameters:
+    app (App): The application object.
+    scale_factor (int): The factor to upscale the image by.
+
+    Returns:
+    Realcugan: The Realcugan model.
+    """
+
+    platforms = cl.get_platforms()
+    gpus = [
+        device
+        for platform in platforms
+        for device in platform.get_devices(device_type=cl.device_type.GPU)
+    ]
+    if gpus:
+        selected_device = max(gpus, key=lambda gpu: gpu.global_mem_size)
+        update_log_area_callback(
+            app,
+            f"Using GPU: {selected_device.name}",
+        )
+    else:
+        selected_device = None
+        update_log_area_callback(
+            app, "No GPU found, using CPU instead.\nProcessing will be slow..."
+        )
+
+    realcugan = Realcugan(
+        gpuid=gpus.index(selected_device) if selected_device else -1,
+        scale=scale_factor,
+    )
+
+    return realcugan
+
+
+def upscale_image(image: np.ndarray, realcugan: Realcugan) -> np.ndarray:
+    """
+    Upscale the image using Realcugan.
+
+    Parameters:
+    image (np.ndarray): The image to upscale.
+    realcugan (Realcugan): The Realcugan model.
+
+    Returns:
+    np.ndarray: The upscaled image.
+    """
+
+    upscaled = realcugan.process_cv2(image)
+
+    return upscaled
