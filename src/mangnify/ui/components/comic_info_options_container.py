@@ -25,11 +25,20 @@ def build_title_container(app):
     app.title_input = toga.TextInput(
         style=Pack(flex=4),
         placeholder=TITLE_PLACEHOLDER,
+        on_change=lambda widget: on_change_title_input(widget, app),
     )
 
     app.title_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.title_container.add(app.title_label)
     app.title_container.add(app.title_input)
+
+
+def on_change_title_input(widget, app):
+    """
+    Handle the change event on the title input.
+    """
+
+    app.title = widget.value
 
 
 def build_series_container(app):
@@ -45,11 +54,20 @@ def build_series_container(app):
     app.series_input = toga.TextInput(
         style=Pack(flex=4),
         placeholder=SERIES_PLACEHOLDER,
+        on_change=lambda widget: on_change_series_input(widget, app),
     )
 
     app.series_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.series_container.add(app.series_label)
     app.series_container.add(app.series_input)
+
+
+def on_change_series_input(widget, app):
+    """
+    Handle the change event on the series input.
+    """
+
+    app.series = widget.value
 
 
 def build_volume_container(app):
@@ -65,11 +83,20 @@ def build_volume_container(app):
     app.volume_input = toga.TextInput(
         style=Pack(flex=4),
         placeholder=VOLUME_PLACEHOLDER,
+        on_change=lambda widget: on_change_volume_input(widget, app),
     )
 
     app.volume_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
     app.volume_container.add(app.volume_label)
     app.volume_container.add(app.volume_input)
+
+
+def on_change_volume_input(widget, app):
+    """
+    Handle the change event on the volume input.
+    """
+
+    app.volume = widget.value
 
 
 def build_writer_container(app):
@@ -85,11 +112,20 @@ def build_writer_container(app):
     app.writer_input = toga.TextInput(
         style=Pack(flex=4),
         placeholder=WRITER_PLACEHOLDER,
+        on_change=lambda widget: on_change_writer_input(widget, app),
     )
 
     app.writer_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 15, 20)))
     app.writer_container.add(app.writer_label)
     app.writer_container.add(app.writer_input)
+
+
+def on_change_writer_input(widget, app):
+    """
+    Handle the change event on the writer input.
+    """
+
+    app.writer = widget.value
 
 
 def build_manga_container(app):

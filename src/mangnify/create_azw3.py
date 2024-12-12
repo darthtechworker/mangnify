@@ -42,8 +42,8 @@ def create_azw3(app) -> None:
         result = package_azw3(
             app.working_directory,
             app.output_directory,
-            app.title_input.value,
-            app.writer_input.value,
+            app.title,
+            app.writer,
             app.is_manga,
             100 - app.compression_level,
         )

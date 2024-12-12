@@ -54,13 +54,11 @@ def write_comic_info(app):
     comic_info_path = os.path.join(app.working_directory, "ComicInfo.xml")
 
     root = ET.Element("ComicInfo")
-    ET.SubElement(root, "Title").text = app.title_input.value
-    ET.SubElement(root, "Series").text = app.series_input.value
-    ET.SubElement(root, "Volume").text = app.volume_input.value
-    ET.SubElement(root, "Writer").text = app.writer_input.value
-    ET.SubElement(root, "Manga").text = (
-        "YesAndRightToLeft" if app.manga_checkbox.value else "No"
-    )
+    ET.SubElement(root, "Title").text = app.title
+    ET.SubElement(root, "Series").text = app.series
+    ET.SubElement(root, "Volume").text = app.volume
+    ET.SubElement(root, "Writer").text = app.writer
+    ET.SubElement(root, "Manga").text = "YesAndRightToLeft" if app.is_manga else "No"
 
     tree = ET.ElementTree(root)
     tree.write(comic_info_path, encoding="utf-8", xml_declaration=True)

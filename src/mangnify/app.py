@@ -38,6 +38,13 @@ class Mangnify(toga.App):
         self.is_rotate_spread = None
         self.scale_factor = None
 
+        # Comic Info options
+        self.title = None
+        self.series = None
+        self.volume = None
+        self.writer = None
+        self.is_manga = None
+
         # CBZ options
         self.is_cbz_needed = None
 
