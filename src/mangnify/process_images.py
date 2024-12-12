@@ -73,6 +73,11 @@ def process_images(app) -> None:
             current_image_count += 1
             progress = (current_image_count / total_images) * 100
             update_progress_bar_callback(app, progress)
+            update_log_area_callback(
+                app,
+                f"Processed {current_image_count}/{total_images} images...",
+                True,
+            )
 
         if app.is_keep_images:
             processed_images_directory = app.output_directory / "Processed Images"
@@ -88,5 +93,5 @@ def process_images(app) -> None:
     processed_size_mb = processed_size / (1024 * 1024)
     update_log_area_callback(
         app,
-        f"Images processed.\n\nOriginal Size: {original_size_mb:.2f} MB\nProcessed Size: {processed_size_mb:.2f} MB",
+        f"\nImages processed.\n\nOriginal Size: {original_size_mb:.2f} MB\nProcessed Size: {processed_size_mb:.2f} MB",
     )

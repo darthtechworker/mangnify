@@ -23,21 +23,30 @@ def toggle_ui(app, is_enabled):
     app.abort_button.enabled = not is_enabled
 
 
-def update_log_area(app, message):
+def update_log_area(app, message, in_place=False):
     """
     Update the log area.
     """
 
-    app.log_area.value += f"{message}\n"
+    if in_place:
+        lines = app.log_area.value.split("\n")
+        if lines:
+            lines[-1] = message
+            app.log_area.value = "\n".join(lines)
+        else:
+            app.log_area.value = message
+    else:
+        app.log_area.value += f"{message}\n"
+
     app.log_area.scroll_to_bottom()
 
 
-def update_log_area_callback(app, message):
+def update_log_area_callback(app, message, in_place=False):
     """
     Update the log area callback
     """
 
-    app.loop.call_later(0, update_log_area, app, message)
+    app.loop.call_later(0, update_log_area, app, message, in_place)
 
 
 def update_progress_bar(app, value):
