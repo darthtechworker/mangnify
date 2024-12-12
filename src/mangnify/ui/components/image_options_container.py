@@ -7,7 +7,7 @@ TRIM_LIMIT_LABEL = "Trim Limit:"
 ADD_MARGINS_LABEL = "Add Margins:"
 ROTATE_SPREADS_LABEL = "Rotate Spreads:"
 SCALE_LABEL = "A.I. Upscale:"
-SCALE_OPTIONS = ["None", "1x", "2x", "3x", "4x"]
+SCALE_OPTIONS = ["None", "2x", "3x", "4x"]
 
 
 def build_jpg_quality_container(app):
