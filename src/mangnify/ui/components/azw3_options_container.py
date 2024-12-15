@@ -14,7 +14,7 @@ def build_grayscale_container(app):
 
     app.grayscale_label = toga.Label(
         text=GRAYSCALE_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 79, 0, 0)),
+        style=Pack(font_weight=BOLD, padding=(0, 81, 0, 0)),
     )
     app.grayscale_checkbox = toga.Switch(
         text="",
@@ -77,7 +77,7 @@ def build_device_height_container(app):
     )
     app.device_height_input = toga.TextInput(
         style=Pack(width=67),
-        placeholder="px",
+        placeholder="optional",
         on_change=lambda widget: on_change_device_height_input(widget, app),
     )
 
@@ -110,7 +110,7 @@ def build_device_width_container(app):
     )
     app.device_width_input = toga.TextInput(
         style=Pack(width=67),
-        placeholder="px",
+        placeholder="optional",
         on_change=lambda widget: on_change_device_width_input(widget, app),
     )
 

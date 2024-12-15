@@ -15,6 +15,7 @@ def toggle_ui(app, is_enabled):
     app.series_input.enabled = is_enabled
     app.volume_input.enabled = is_enabled
     app.writer_input.enabled = is_enabled
+    app.manga_checkbox.enabled = is_enabled
     app.grayscale_checkbox.enabled = is_enabled
     app.compression_level_dropdown.enabled = is_enabled
     app.device_height_input.enabled = is_enabled
@@ -82,14 +83,6 @@ def is_valid_input(app):
     if app.is_azw3_needed:
         if not app.title_input.value:
             update_log_area_callback(app, "Please enter the title.")
-            return False
-
-        if not app.device_height_input.value:
-            update_log_area_callback(app, "Please enter the device height.")
-            return False
-
-        if not app.device_width_input.value:
-            update_log_area_callback(app, "Please enter the device width.")
             return False
 
     return True

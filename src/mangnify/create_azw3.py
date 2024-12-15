@@ -35,7 +35,8 @@ def create_azw3(app) -> None:
             image_path = app.working_directory / image_name
             image = load_image(image_path, app.is_grayscale)
 
-            image = resize_image(image, app.device_height, app.device_width)
+            if app.device_height and app.device_width:
+                image = resize_image(image, app.device_height, app.device_width)
 
             save_image(image_path, image, 100)
 
