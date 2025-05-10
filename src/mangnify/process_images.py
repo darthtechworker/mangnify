@@ -8,6 +8,7 @@ from mangnify.utils.image import (
     add_margins,
     init_realcugan,
     load_image,
+    resize_image,
     rotate_spread,
     save_image,
     trim_margins,
@@ -48,7 +49,11 @@ def process_images(app) -> None:
                 raise Exception("Aborted by user.")
 
             image_path = app.input_directory / image_name
-            image = load_image(image_path)
+
+            if app.is_grayscale:
+                image = load_image(image_path, is_grayscale=True)
+            else:
+                image = load_image(image_path)
 
             original_size += image_path.stat().st_size
 
@@ -64,9 +69,12 @@ def process_images(app) -> None:
             if app.scale_factor is not None:
                 image = upscale_image(image, realcugan)
 
+            if app.is_resize:
+                image = resize_image(image, app.device_width, app.device_height)
+
             new_image_name = image_name.split(".")[0] + "_mangnified.jpg"
             new_image_path = app.working_directory / new_image_name
-            save_image(new_image_path, image, app.jpg_quality)
+            save_image(new_image_path, image, jpg_quality=(100 - app.compression_level))
 
             processed_size += new_image_path.stat().st_size
 
@@ -79,10 +87,9 @@ def process_images(app) -> None:
                 True,
             )
 
-        if app.is_keep_images:
-            processed_images_directory = app.output_directory / "Processed Images"
-            create_directory(processed_images_directory)
-            copy_images(app.working_directory, processed_images_directory)
+        processed_images_directory = app.output_directory / "Processed Images"
+        create_directory(processed_images_directory)
+        copy_images(app.working_directory, processed_images_directory)
 
     except Exception as e:
         logger.exception(e)

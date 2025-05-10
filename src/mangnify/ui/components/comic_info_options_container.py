@@ -28,7 +28,7 @@ def build_title_container(app):
         on_change=lambda widget: on_change_title_input(widget, app),
     )
 
-    app.title_container = toga.Box(style=Pack(direction=ROW, padding=(10, 20, 8, 20)))
+    app.title_container = toga.Box(style=Pack(direction=ROW, padding=(2, 20, 8, 20)))
     app.title_container.add(app.title_label)
     app.title_container.add(app.title_input)
 

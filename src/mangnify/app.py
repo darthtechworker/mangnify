@@ -50,8 +50,11 @@ class Mangnify(toga.App):
 
         # AZW3 options
         self.is_azw3_needed = None
+
+        # Output options
         self.is_grayscale = None
         self.compression_level = None
+        self.is_resize = None
         self.device_height = None
         self.device_width = None
 

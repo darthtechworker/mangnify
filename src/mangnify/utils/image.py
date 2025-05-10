@@ -43,8 +43,12 @@ def trim_margins(image: np.ndarray, trim_limit: int) -> np.ndarray:
 
     trim_limit = trim_limit / 100.0
 
-    white_mask = cv2.inRange(image, (240, 240, 240), (255, 255, 255))
-    black_mask = cv2.inRange(image, (0, 0, 0), (5, 5, 5))
+    if len(image.shape) == 2:
+        white_mask = cv2.inRange(image, 240, 255)
+        black_mask = cv2.inRange(image, 0, 5)
+    else:
+        white_mask = cv2.inRange(image, (240, 240, 240), (255, 255, 255))
+        black_mask = cv2.inRange(image, (0, 0, 0), (5, 5, 5))
 
     combined_mask = cv2.bitwise_or(white_mask, black_mask)
 
@@ -156,6 +160,10 @@ def resize_image(image: np.ndarray, max_height: int, max_width: int) -> np.ndarr
     else:
         new_height = min(height, max_height)
         new_width = int(new_height * aspect_ratio)
+
+    # Apply Gaussian blur if the image is downscaled by more than 50% to reduce artifacts
+    if new_height < height / 2 or new_width < width / 2:
+        image = cv2.GaussianBlur(image, (5, 5), 0)
 
     resized = cv2.resize(
         image, (new_width, new_height), interpolation=cv2.INTER_LANCZOS4

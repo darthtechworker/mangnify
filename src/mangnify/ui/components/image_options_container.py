@@ -1,43 +1,12 @@
 import toga
 from toga.style.pack import BOLD, COLUMN, ROW, Pack
 
-JPG_QUALITY_LABEL = "JPG Quality:"
 TRIM_MARGINS_LABEL = "Trim Margins:"
 TRIM_LIMIT_LABEL = "Trim Limit:"
 ADD_MARGINS_LABEL = "Add Margins:"
 ROTATE_SPREADS_LABEL = "Rotate Spreads:"
 SCALE_LABEL = "A.I. Upscale:"
 SCALE_OPTIONS = ["None", "2x", "3x", "4x"]
-
-
-def build_jpg_quality_container(app):
-    """
-    Build the JPG quality container.
-    """
-
-    app.jpg_quality_label = toga.Label(
-        text=JPG_QUALITY_LABEL,
-        style=Pack(font_weight=BOLD, padding=(0, 46, 0, 0)),
-    )
-    app.jpg_quality_dropdown = toga.Selection(
-        items=[f"{i}%" for i in range(80, 101)],
-        style=Pack(width=65),
-        on_change=lambda widget: on_change_jpg_quality_dropdown(widget, app),
-    )
-
-    app.jpg_quality_container = toga.Box(
-        style=Pack(direction=ROW, padding=(6, 82, 0, 82), height=30)
-    )
-    app.jpg_quality_container.add(app.jpg_quality_label)
-    app.jpg_quality_container.add(app.jpg_quality_dropdown)
-
-
-def on_change_jpg_quality_dropdown(widget, app):
-    """
-    Handle the select event on the JPG quality dropdown.
-    """
-
-    app.jpg_quality = int(widget.value[:-1])
 
 
 def build_trim_margins_container(app):
@@ -208,7 +177,6 @@ def build_image_options_container(app):
     Build the image options container.
     """
 
-    build_jpg_quality_container(app)
     build_trim_margins_container(app)
     build_trim_margins_options_container(app)
     build_add_margins_container(app)
@@ -216,7 +184,6 @@ def build_image_options_container(app):
     build_scale_container(app)
 
     app.image_options_container = toga.Box(style=Pack(direction=COLUMN))
-    app.image_options_container.add(app.jpg_quality_container)
     app.image_options_container.add(app.trim_margins_container)
     app.image_options_container.add(app.trim_margins_options_container)
     app.image_options_container.add(app.add_margins_container)

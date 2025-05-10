@@ -3,6 +3,7 @@ from toga.style.pack import BOLD, COLUMN, ROW, Pack
 
 GRAYSCALE_LABEL = "Grayscale:"
 COMPRESSION_LEVEL_LABEL = "Compression:"
+RESIZE_LABEL = "Resize:"
 DEVICE_HEIGHT_LABEL = "Device Height:"
 DEVICE_WIDTH_LABEL = "Device Width:"
 
@@ -22,7 +23,7 @@ def build_grayscale_container(app):
     )
 
     app.grayscale_container = toga.Box(
-        style=Pack(direction=ROW, padding=(5, 82, 0, 82), height=30)
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=30)
     )
     app.grayscale_container.add(app.grayscale_label)
     app.grayscale_container.add(app.grayscale_checkbox)
@@ -66,6 +67,27 @@ def on_change_compression_level_dropdown(widget, app):
     app.compression_level = int(widget.value[:-1])
 
 
+def build_resize_container(app):
+    """
+    Build the resize container.
+    """
+
+    app.resize_label = toga.Label(
+        text=RESIZE_LABEL,
+        style=Pack(font_weight=BOLD, padding=(0, 103, 0, 0)),
+    )
+    app.resize_checkbox = toga.Switch(
+        text="",
+        on_change=lambda widget: on_change_resize_checkbox(widget, app),
+    )
+
+    app.resize_container = toga.Box(
+        style=Pack(direction=ROW, padding=(0, 82, 0, 82), height=29)
+    )
+    app.resize_container.add(app.resize_label)
+    app.resize_container.add(app.resize_checkbox)
+
+
 def build_device_height_container(app):
     """
     Build the device height container.
@@ -77,7 +99,7 @@ def build_device_height_container(app):
     )
     app.device_height_input = toga.TextInput(
         style=Pack(width=67),
-        placeholder="optional",
+        placeholder="px",
         on_change=lambda widget: on_change_device_height_input(widget, app),
     )
 
@@ -110,7 +132,7 @@ def build_device_width_container(app):
     )
     app.device_width_input = toga.TextInput(
         style=Pack(width=67),
-        placeholder="optional",
+        placeholder="px",
         on_change=lambda widget: on_change_device_width_input(widget, app),
     )
 
@@ -132,18 +154,45 @@ def on_change_device_width_input(widget, app):
     widget.on_change = lambda widget: on_change_device_width_input(widget, app)
 
 
-def build_azw3_options_container(app):
+def build_device_dimensions_container(app):
     """
-    Build the azw3 options container.
+    Build the device dimensions container.
+    """
+
+    app.device_dimensions_container = toga.Box(style=Pack(direction=COLUMN))
+
+
+def on_change_resize_checkbox(widget, app):
+    """
+    Handle the toggle event on the resize checkbox.
+    """
+
+    app.is_resize = widget.value
+
+    if widget.value:
+        app.device_dimensions_container.add(app.device_height_container)
+        app.device_dimensions_container.add(app.device_width_container)
+    else:
+        app.device_dimensions_container.remove(app.device_height_container)
+        app.device_dimensions_container.remove(app.device_width_container)
+
+    app.resize_window()
+
+
+def build_output_options_container(app):
+    """
+    Build the output options container.
     """
 
     build_grayscale_container(app)
     build_compression_level_container(app)
+    build_resize_container(app)
     build_device_height_container(app)
     build_device_width_container(app)
+    build_device_dimensions_container(app)
 
-    app.azw3_options_container = toga.Box(style=Pack(direction=COLUMN))
-    app.azw3_options_container.add(app.grayscale_container)
-    app.azw3_options_container.add(app.compression_level_container)
-    app.azw3_options_container.add(app.device_height_container)
-    app.azw3_options_container.add(app.device_width_container)
+    app.output_options_container = toga.Box(style=Pack(direction=COLUMN))
+    app.output_options_container.add(app.grayscale_container)
+    app.output_options_container.add(app.compression_level_container)
+    app.output_options_container.add(app.resize_container)
+    app.output_options_container.add(app.device_dimensions_container)

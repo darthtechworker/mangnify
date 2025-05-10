@@ -5,7 +5,6 @@ def toggle_ui(app, is_enabled):
 
     app.select_input_directory_button.enabled = is_enabled
     app.select_options_dropdown.enabled = is_enabled
-    app.jpg_quality_dropdown.enabled = is_enabled
     app.trim_margins_checkbox.enabled = is_enabled
     app.trim_limit_dropdown.enabled = is_enabled
     app.add_margins_dropdown.enabled = is_enabled
@@ -75,12 +74,16 @@ def is_valid_input(app):
         update_log_area_callback(app, "Please select the input directory.")
         return False
 
-    if app.is_cbz_needed:
-        if not app.title_input.value:
-            update_log_area_callback(app, "Please enter the title.")
+    if app.is_resize:
+        if not app.device_height_input.value:
+            update_log_area_callback(app, "Please enter the device height.")
             return False
 
-    if app.is_azw3_needed:
+        if not app.device_width_input.value:
+            update_log_area_callback(app, "Please enter the device width.")
+            return False
+
+    if app.is_cbz_needed or app.is_azw3_needed:
         if not app.title_input.value:
             update_log_area_callback(app, "Please enter the title.")
             return False

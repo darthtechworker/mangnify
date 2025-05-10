@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 hi_res_azw3_lib = None
 
 if platform.system() == "Darwin":
-    hi_res_azw3_lib = hi_res_azw3_lib = ctypes.CDLL(
+    hi_res_azw3_lib = ctypes.CDLL(
         os.path.abspath(
             os.path.join(os.path.dirname(__file__), "../resources/hiresazw3.dylib")
         )
